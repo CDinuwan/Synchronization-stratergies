@@ -34,7 +34,7 @@ public class ExampleExpectedConditionsTest {
         final By linkToClick = By.cssSelector("a#aboutlink");
 //        new WebDriverWait(driver, 10).
 //                until(ExpectedConditions.visibilityOfElementLocated(linkToClick));
-
+//
 //        new WebDriverWait(driver, 10).
 //                until(ExpectedConditions.presenceOfElementLocated(linkToClick));
 

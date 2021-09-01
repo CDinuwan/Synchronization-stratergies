@@ -12,6 +12,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
+
 public class ConfiguringWebDriverWaitTest {
 
     WebDriver driver;
@@ -32,7 +34,10 @@ public class ConfiguringWebDriverWaitTest {
         alumniImage.click();
 
         final By linkToClick = By.cssSelector("a#aboutlink");
-        new WebDriverWait(driver, 10).
+        new WebDriverWait(driver, 10).pollingEvery(Duration.ofMillis(100)).
+                withMessage("Could not find a clickable link").
+                withTimeout(Duration.ofSeconds(5)).
+                ignoring(NullPointerException.class).
                 until(ExpectedConditions.elementToBeClickable(linkToClick));
 
         driver.findElement(linkToClick).click();

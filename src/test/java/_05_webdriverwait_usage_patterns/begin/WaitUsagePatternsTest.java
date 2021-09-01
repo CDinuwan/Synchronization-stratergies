@@ -9,6 +9,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 /*
@@ -32,7 +34,7 @@ public class WaitUsagePatternsTest {
     }
 
     @Test
-    public void waitForEverySyncPoint() throws InterruptedException {
+    public void waitForEverySyncPoint() {
         driver = new ChromeDriver();
 
         driver.get("https://eviltester.github.io/synchole/collapseable.html");
@@ -42,7 +44,9 @@ public class WaitUsagePatternsTest {
 
         final By linkToClick = By.cssSelector("a#aboutlink");
 
-        Thread.sleep(3000);
+        new WebDriverWait(driver,10).until(
+                ExpectedConditions.elementToBeClickable(linkToClick)
+        );
 
         final WebElement aboutLink = driver.findElement(linkToClick);
         aboutLink.click();
