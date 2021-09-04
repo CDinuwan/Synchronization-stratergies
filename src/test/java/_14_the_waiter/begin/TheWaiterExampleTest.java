@@ -11,6 +11,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import waiter.Waiter;
 
 import java.util.concurrent.TimeUnit;
 
@@ -52,7 +53,11 @@ public class TheWaiterExampleTest {
 
         driver = new ChromeDriver();
 
-        driver.get("https://eviltester.github.io/synchole/buttons.html");
+        Waiter waiter =new Waiter();
+
+        waiter.get("https://eviltester.github.io/synchole/buttons.html",driver);
+
+//        driver.get("https://eviltester.github.io/synchole/buttons.html");
 
         ButtonPage page = new ButtonPage(driver);
 
